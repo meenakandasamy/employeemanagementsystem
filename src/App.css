@@ -1,38 +1,136 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.App-link {
-  color: #61dafb;
+.main-content {
+  flex: 1;
+  margin-left: 280px;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  transition: margin-left 0.3s ease;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.content-wrapper {
+  padding: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.content-wrapper h1 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.content-wrapper p {
+  color: #6c757d;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 25px;
+  margin-top: 40px;
+}
+
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid #e9ecef;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+  color: #495057;
+  margin: 0 0 15px 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.card-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #667eea;
+  margin: 0 0 10px 0;
+}
+
+.card-description {
+  color: #6c757d;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .content-wrapper {
+    padding: 20px;
   }
+  
+  .content-wrapper h1 {
+    font-size: 2rem;
+  }
+  
+  .dashboard-cards {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .card {
+    padding: 20px;
+  }
+}
+
+/* When sidebar is collapsed */
+.sidebar.collapsed + .main-content {
+  margin-left: 70px;
+}
+
+/* Animation for smooth transitions */
+.main-content,
+.content-wrapper,
+.card {
+  transition: all 0.3s ease;
+}
+
+/* Additional styling for better visual hierarchy */
+.content-wrapper h1::after {
+  content: '';
+  display: block;
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  margin-top: 10px;
+  border-radius: 2px;
+}
+
+/* Card hover effects */
+.card:hover .card-number {
+  color: #764ba2;
+}
+
+/* Focus styles for accessibility */
+.card:focus-within {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
 }
